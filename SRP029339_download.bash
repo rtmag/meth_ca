@@ -7,4 +7,13 @@ while read line; do
 SRA=$(echo $line|cut -f2 -d' ');
 echo $SRA;
 /home/rtm/myprograms/sratoolkit.2.9.6-1-centos_linux64/bin/fastq-dump --split-files --gzip $SRA;
-done < biosample_result_edited.txt
+done <  biosample_result_edited.txt
+
+
+while read line; do
+SRA=$(echo $line|cut -f2 -d' ');
+echo $SRA;
+/home/rtm/myprograms/sratoolkit.2.9.6-1-centos_linux64/bin/fastq-dump --split-files --gzip $SRA;
+done < mice_biosample_result_edited.txt
+
+sudo /home/rtm/myprograms/Bismark/bismark_genome_preparation --bowtie2 /home/references/mm10_noScaffold/

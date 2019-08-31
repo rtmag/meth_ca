@@ -24,3 +24,8 @@ cat WT_D14_R4*_1.fastq.gz > WT_D14_rep4_R1.fastq.gz
 cat WT_D14_R4*_2.fastq.gz > WT_D14_rep4_R2.fastq.gz
 
 #######
+for bamfile in /home/rtm/methCA/fastq_cat/*R1.fastq.gz ;
+do echo $bamfile; 
+sample2=$(echo $bamfile|perl -pe "s/R1/R2/g") ;
+/home/rtm/myprograms/TrimGalore/trim_galore --paired --illumina -q 20 --fastqc -o /home/rtm/methCA/fastq_trim/ $bamfile $sample2 ;
+done

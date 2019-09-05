@@ -1,16 +1,12 @@
-~/myPrograms/Bismark/bismark --bowtie2 --multicore 50 \
-/root/resources/hg38_bismark_vanilla/ \
--1 /root/annalisa_wgbs/trimmed/K562_AZA_2uM_48h_1_val_1.fq.gz \
--2 /root/annalisa_wgbs/trimmed/K562_AZA_2uM_48h_2_val_2.fq.gz
-#2
+###########
+# BIsmark align
 
-for bamfile in /home/rtm/methCA/fastq_trim/*R1_val*fq.gz;
-do ls -lh $bamfile; 
-name=${bamfile//\/home\/rtm\/vivek\/navi\/wes3\/bam\/} ;
-sample=${name//\.recalibrated\.bam} ;
-java -Xmx200G -jar /home/rtm/myprograms/gatk-4.1.0.0/gatk-package-4.1.0.0-local.jar Mutect2 \
--R /home/references/broadhg38/broad_hg38/Homo_sapiens_assembly38.fasta \
--I $bamfile \
--tumor $sample \
--O /home/rtm/vivek/navi/wes3/vcf_test/all_$sample.vcf.gz
+for fastq in /home/rtm/methCA/fastq_trim/*R1_val_1.fq.gz;
+do ls -lh $fastq; 
+fastq2=$(echo $fastqfile|perl -pe "s/R1_val_1/R2_val_2/g") ;
+/home/rtm/myprograms/Bismark/bismark --bowtie2 --multicore 22 \
+/home/rtm/resources/hg38_bs_quy/ \
+-1 $fastq \
+-2 $fastq2 \
+--output_dir /home/rtm/methCA/bam/ ;
 done

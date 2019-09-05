@@ -9,5 +9,5 @@ echo $fastq2;
 /home/rtm/resources/hg38_bs_quy/ \
 -1 $fastq \
 -2 $fastq2 \
---output_dir /home/rtm/methCA/bam/ ;
+--output_dir /home/rtm/methCA/bam ;
 done

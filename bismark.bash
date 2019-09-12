@@ -16,7 +16,7 @@ done
 for bam in /home/rtm/methCA/bam/*bam ;
 do echo $bam;
 /home/rtm/myprograms/Bismark/bismark_methylation_extractor --multicore 22 --gzip \
---buffer_size 150G --paired-end --ample_memory --comprehensive --cytosine_report \
+--paired-end --ample_memory --comprehensive --cytosine_report \
 --CX_context --genome_folder /home/rtm/resources/hg38_bs_quy/ $bam \
 --output /home/rtm/methCA/bismark_methylation/;
 done

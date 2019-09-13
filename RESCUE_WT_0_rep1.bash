@@ -2,5 +2,5 @@ zcat /home/rtm/methCA/fastq_cat/WT_D0_rep1_R2.fastq.gz|perl -pe 's/CAAACCCTATAAA
 
 /home/rtm/myprograms/TrimGalore/trim_galore --paired --illumina -q 20 --fastqc \
 -o /home/rtm/methCA/fastq_trim/ \
-/home/rtm/methCA/fastq_cat/WT_D0_rep1_rescued_R1.fastq \
-/home/rtm/methCA/fastq_cat/WT_D0_rep1_rescued_R2.fastq ;
+/home/rtm/methCA/fastq_cat/rescued/WT_D0_rep1_rescued_R1.fastq \
+/home/rtm/methCA/fastq_cat/rescued/WT_D0_rep1_rescued_R2.fastq ;

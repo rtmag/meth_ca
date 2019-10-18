@@ -32,4 +32,11 @@ cat  /home/rtm/methCA/fastq_cat/WT_D0_rep1_R2_rescued.fastq|head -n 515201481| t
 
 cat /home/rtm/methCA/fastq_cat/WT_D0_rep1_R2_rescued.fastq|perl -pe 's/\@D151BACXX120918\:7\:1315\:4443\:96864\/2\nCAAACCCTATAAAAAACAATTTAATATCATCTATCAAAATTACAAATACACAAACCATTTAACCCAACAATCCCACATCCAAAAATCTA//' > /home/rtm/methCA/fastq_cat/WT_D0_rep1_R2_rescued_2ndTry.fastq 
 
+perl -pe 's/\@D151BACXX120918\:7\:1315\:4443\:96864\/2\n//' /home/rtm/methCA/fastq_cat/WT_D0_rep1_R2_rescued_2ndTry.fastq  > /home/rtm/methCA/fastq_cat/WT_D0_rep1_R2_rescued_2ndTry_final.fastq
+
 cat  /home/rtm/methCA/fastq_cat/WT_D0_rep1_R2_rescued_2ndTry.fastq|head -n 515201481| tail -n +515201461
+
+/home/rtm/myprograms/TrimGalore/trim_galore --paired --illumina -q 20 --fastqc \
+-o /home/rtm/methCA/fastq_trim/ \
+/home/rtm/methCA/fastq_cat/rescued/WT_D0_rep1_rescued_R1.fastq \
+/home/rtm/methCA/fastq_cat/rescued/WT_D0_rep1_R2_rescued_2ndTry_final.fastq ;

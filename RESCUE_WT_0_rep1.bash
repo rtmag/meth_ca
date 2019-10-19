@@ -38,8 +38,10 @@ cat  /home/rtm/methCA/fastq_cat/WT_D0_rep1_R2_rescued_2ndTry.fastq|head -n 51520
 
 cat  /home/rtm/methCA/fastq_cat/WT_D0_rep1_R2_rescued_2ndTry_final.fastq|head -n 515201481| tail -n +515201461
 
+mv /home/rtm/methCA/fastq_cat/WT_D0_rep1_R2_rescued_2ndTry_final.fastq /home/rtm/methCA/fastq_cat/rescued2/WT_D0_rep1_rescued_R2.fastq
+mv /home/rtm/methCA/fastq_cat/rescued/WT_D0_rep1_rescued_R1.fastq /home/rtm/methCA/fastq_cat/rescued2/WT_D0_rep1_rescued_R1.fastq
 
 /home/rtm/myprograms/TrimGalore/trim_galore --paired --illumina -q 20 --fastqc \
--o /home/rtm/methCA/fastq_trim/ \
-/home/rtm/methCA/fastq_cat/rescued/WT_D0_rep1_rescued_R1.fastq \
-/home/rtm/methCA/rescued/WT_D0_rep1_R2_rescued_2ndTry_final.fastq ;
+-o /home/rtm/methCA/fastq_cat/rescued2 \
+/home/rtm/methCA/fastq_cat/rescued2/WT_D0_rep1_rescued_R1.fastq \
+/home/rtm/methCA/fastq_cat/rescued2/WT_D0_rep1_rescued_R2.fastq ;

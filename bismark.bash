@@ -20,3 +20,11 @@ do echo $bam;
 --CX_context --genome_folder /home/rtm/resources/hg38_bs_quy/ $bam \
 --output /home/rtm/methCA/bismark_methylation/;
 done
+
+###########
+# algn and methext from rescued sample
+/home/rtm/myprograms/Bismark/bismark --bowtie2 --multicore 22 \
+/home/rtm/resources/hg38_bs_quy/ \
+-1 WT_D0_rep1_rescued_R1_val_1.fq \
+-2 WT_D0_rep1_rescued_R2_val_2.fq \
+--output_dir /home/rtm/methCA/bam

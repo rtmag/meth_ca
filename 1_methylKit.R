@@ -2,7 +2,7 @@
 library(methylKit)
 
 file.list=list( 
-"/home/rtm/methCA/bismark_methylation/WT_D0_rep1_rescued_R1_val_1_bismark_bt2_pe.CX_report.txt.gz"
+"/home/rtm/methCA/bismark_methylation/WT_D0_rep1_rescued_R1_val_1_bismark_bt2_pe.CX_report.txt.gz",
 "/home/rtm/methCA/bismark_methylation/WT_D0_rep2_R1_val_1_bismark_bt2_pe.CX_report.txt.gz",
 "/home/rtm/methCA/bismark_methylation/WT_D6_rep1_R1_val_1_bismark_bt2_pe.CX_report.txt.gz",
 "/home/rtm/methCA/bismark_methylation/WT_D6_rep3_R1_val_1_bismark_bt2_pe.CX_report.txt.gz",
@@ -20,4 +20,5 @@ myobj=methRead(file.list,
            
 meth=unite(myobj, destrand=TRUE,mc.cores=22)
 myDiff=calculateDiffMeth(meth,num.cores=40)
-
+############################################################################################
+############################################################################################

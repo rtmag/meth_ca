@@ -38,7 +38,7 @@ CAmyobj=methRead(file.list,
            context="none",
            pipeline="bismarkCytosineReport",
            header=FALSE,
-           mincov=3)
+           mincov=6)
            
-meth=unite(myobj, destrand=TRUE,mc.cores=22)
-myDiff=calculateDiffMeth(meth,num.cores=40)
+CAmeth=unite(CAmyobj, destrand=FALSE,mc.cores=22)
+CAmyDiff=calculateDiffMeth(CAmeth,num.cores=40)

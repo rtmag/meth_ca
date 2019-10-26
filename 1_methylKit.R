@@ -20,6 +20,7 @@ myobj=methRead(file.list,
            
 meth=unite(myobj, destrand=TRUE,mc.cores=22)
 myDiff=calculateDiffMeth(meth,num.cores=40)
+saveRDS(myDiff,"D6_vs_D0_CpG_mydiff.rds")
 ############################################################################################
 ############################################################################################
 
@@ -42,3 +43,4 @@ CAmyobj=methRead(file.list,
            
 CAmeth=unite(CAmyobj, destrand=FALSE,mc.cores=22)
 CAmyDiff=calculateDiffMeth(CAmeth,num.cores=40)
+saveRDS(CAmyDiff,"D6_vs_D0_CpA_mydiff.rds")

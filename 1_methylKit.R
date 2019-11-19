@@ -44,3 +44,28 @@ CAmyobj=methRead(file.list,
 CAmeth=unite(CAmyobj, destrand=FALSE,mc.cores=22)
 CAmyDiff=calculateDiffMeth(CAmeth,num.cores=40)
 saveRDS(CAmyDiff,"D6_vs_D0_CpA_mydiff.rds")
+###
+
+#pooled CA
+
+file.list=list( 
+"/home/rtm/methCA/bismark_methylation/dumps/WT_D0_rep1_CA.report.txt.gz",
+"/home/rtm/methCA/bismark_methylation/dumps/WT_D0_rep2_CA.report.txt.gz",
+"/home/rtm/methCA/bismark_methylation/dumps/WT_D6_rep1_CA.report.txt.gz",
+"/home/rtm/methCA/bismark_methylation/dumps/WT_D6_rep3_CA.report.txt.gz",
+"/home/rtm/methCA/bismark_methylation/dumps/WT_D6_rep4_CA.report.txt.gz"
+ )
+
+CAmyobj=methRead(file.list,
+           sample.id=list("D0_1_CA","D0_2_CA","D6_1_CA","D6_3_CA","D6_4_CA"),
+           assembly="hg38",
+           treatment=c(0,0,1,1,1),
+           context="none",
+           pipeline="bismarkCytosineReport",
+           header=FALSE,
+           mincov=5)
+
+CAmyobj_normalized <- normalizeCoverage(CAmyobj,method="median")
+CAmeth=unite(CAmyobj_normalized, destrand=FALSE,mc.cores=22)
+
+CAmyobj_pool <- pool(CAmyobj_normalized,sample.ids=c("D0","D6")

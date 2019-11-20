@@ -66,13 +66,17 @@ CAmyobj=methRead(file.list,
            mincov=5)
 
 CAmyobj_normalized <- normalizeCoverage(CAmyobj,method="median")
-CAmeth=unite(CAmyobj_normalized, destrand=FALSE,mc.cores=22)
-saveRDS(CAmeth,"CAmeth_d0d6_normalized_united.rds")
-rm(CAmyobj_normalized,CAmyobj)
+rm(CAmyobj,file.list)
+CAmeth=unite(CAmyobj_normalized, destrand=FALSE,mc.cores=22,min.per.group=1)
+dim(CAmeth)
+rm(CAmyobj_normalized)
 CAmeth_pool <- pool(CAmeth,sample.ids=c("D0","D6"))
+dim(CAmeth_pool)
 saveRDS(CAmeth_pool,"CAmeth_d0d6_normalized_united_pooled.rds")
 rm(CAmeth)
 CAmyDiff=calculateDiffMeth(CAmeth_pool,num.cores=40)
 saveRDS(CAmyDiff,"D6_vs_D0_CpA_mydiff_fisher_pooled.rds")
-
+###
+###
+###
                      

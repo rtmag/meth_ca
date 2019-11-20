@@ -47,6 +47,7 @@ saveRDS(CAmyDiff,"D6_vs_D0_CpA_mydiff.rds")
 ###
 
 #pooled CA
+library(methylKit)
 
 file.list=list( 
 "/home/rtm/methCA/bismark_methylation/dumps/WT_D0_rep1_CA.report.txt.gz",
@@ -67,7 +68,7 @@ CAmyobj=methRead(file.list,
 
 CAmyobj_normalized <- normalizeCoverage(CAmyobj,method="median")
 rm(CAmyobj,file.list)
-CAmeth=unite(CAmyobj_normalized, destrand=FALSE,mc.cores=22,min.per.group=1)
+CAmeth=unite(CAmyobj_normalized, destrand=FALSE,mc.cores=22,min.per.group=1L)
 dim(CAmeth)
 rm(CAmyobj_normalized)
 CAmeth_pool <- pool(CAmeth,sample.ids=c("D0","D6"))

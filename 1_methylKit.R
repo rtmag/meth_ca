@@ -66,6 +66,9 @@ CAmyobj=methRead(file.list,
            mincov=5)
 
 CAmyobj_normalized <- normalizeCoverage(CAmyobj,method="median")
-CAmyobj_pool <- pool(CAmyobj_normalized,sample.ids=c("D0","D6")
 CAmeth=unite(CAmyobj_normalized, destrand=FALSE,mc.cores=22)
+saveRDS(CAmeth,"CAmeth_d0d6_normalized_united.rds")
+rm(CAmyobj_normalized,CAmyobj)
+CAmeth_pool <- pool(CAmeth,sample.ids=c("D0","D6"))
 
+                     

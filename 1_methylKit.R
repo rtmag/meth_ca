@@ -71,6 +71,7 @@ saveRDS(CAmeth,"CAmeth_d0d6_normalized_united.rds")
 rm(CAmyobj_normalized,CAmyobj)
 CAmeth_pool <- pool(CAmeth,sample.ids=c("D0","D6"))
 saveRDS(CAmeth_pool,"CAmeth_d0d6_normalized_united_pooled.rds")
+rm(CAmeth)
 CAmyDiff=calculateDiffMeth(CAmeth_pool,num.cores=40)
 saveRDS(CAmyDiff,"D6_vs_D0_CpA_mydiff_fisher_pooled.rds")
 

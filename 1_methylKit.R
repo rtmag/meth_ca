@@ -126,7 +126,7 @@ saveRDS(CGmyDiff,"D6_vs_D0_CpA_mydiff_fisher_pooled.rds")
 ###
 dfmydiff<- getData(CGmyDiff)
 
-pdf("meth_change_dist_density_d0_d6.pdf")
+pdf("meth_changeCG_dist_density_d0_d6.pdf")
 plot(density(dfmydiff[dfmydiff$qvalue<=0.05,'meth.diff']))
 dev.off()
 

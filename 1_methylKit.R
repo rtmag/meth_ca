@@ -79,9 +79,17 @@ rm(CAmeth)
 CAmyDiff=calculateDiffMeth(CAmeth_pool,num.cores=40)
 rm(CAmeth_pool)
 saveRDS(CAmyDiff,"D6_vs_D0_CpA_mydiff_fisher_pooled.rds")
+
+dfmydiff<- getData(CAmyDiff)
+
+pdf("meth_change_dist_density_d0_d6.pdf")
+plot(density(dfmydiff[dfmydiff$qvalue<=0.05,'meth.diff']))
+dev.off()
+
+rm(list = ls())
 ############################################################################################
 ############################################################################################
-#pooled CA
+#pooled CG
 library(methylKit)
 
 file.list=list( 
@@ -116,7 +124,7 @@ saveRDS(CGmyDiff,"D6_vs_D0_CpA_mydiff_fisher_pooled.rds")
 ###
 ###
 ###
-dfmydiff<- getData(CAmyDiff)
+dfmydiff<- getData(CGmyDiff)
 
 pdf("meth_change_dist_density_d0_d6.pdf")
 plot(density(dfmydiff[dfmydiff$qvalue<=0.05,'meth.diff']))

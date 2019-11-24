@@ -132,3 +132,38 @@ dev.off()
 
 rm(list = ls())
 
+#####
+
+# Pooled CG analysis
+
+library(methylKit)
+
+file.list=list( 
+"/home/rtm/methCA/bismark_methylation/dumps/WT_D0_rep1_CG.report.txt.gz",
+"/home/rtm/methCA/bismark_methylation/dumps/WT_D0_rep2_CG.report.txt.gz",
+"/home/rtm/methCA/bismark_methylation/dumps/WT_D6_rep1_CG.report.txt.gz",
+"/home/rtm/methCA/bismark_methylation/dumps/WT_D6_rep3_CG.report.txt.gz",
+"/home/rtm/methCA/bismark_methylation/dumps/WT_D6_rep4_CG.report.txt.gz"
+ )
+
+CGmyobj=methRead(file.list,
+           sample.id=list("D0_1_CG","D0_2_CG","D6_1_CG","D6_3_CG","D6_4_CG"),
+           assembly="hg38",
+           treatment=c(0,0,1,1,1),
+           context="none",
+           pipeline="bismarkCytosineReport",
+           header=FALSE,
+           mincov=5)
+
+CGmyobj=tileMethylCounts(CGmyobj,win.size=1000,step.size=1000,mc.cores = 20)
+
+CGmyobj_normalized <- normalizeCoverage(CGmyobj,method="median")
+rm(CGmyobj,file.list)
+CGmeth=unite(CGmyobj_normalized, destrand=TRUE,mc.cores=22,min.per.group=1L)
+dim(CGmeth)
+rm(CGmyobj_normalized)
+CGmeth_pool <- pool(CGmeth,sample.ids=c("D0","D6"))
+dim(CGmeth_pool)
+rm(CGmeth)
+CGmyDiff=calculateDiffMeth(CGmeth_pool,num.cores=40)
+###

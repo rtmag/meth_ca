@@ -8,7 +8,9 @@ peaksori = dmr[,1:3]
   peaks <- GRanges(peaksori[,1],IRanges(peaksori[,2], peaksori[,3]))
   ch <- import.chain("hg19ToHg38.over.chain")
   cur19 <- rtracklayer::liftOver(peaks, ch)
-  cur19 <- unlist(cur19)
+lc19= lapply( cur19, length )
+
+  cur1 <- unlist(cur19)
   GenomeInfoDb::genome(cur19) <- "hg38"
   cur19_df <- data.frame(cur19)
   dmrhg38 <- cur19_df[,c("seqnames","start","end")]

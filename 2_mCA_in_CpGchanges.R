@@ -110,7 +110,7 @@ table(mydiff$qvalue<=0.05 & mydiff$meth.diff>20)
   dm1_beta_d6<-ca_united_dmr1$meth.diff
 
 pdf("dmr1_methdiff_density_mCpA_d0_d6.pdf")
-plot(density(dm1_beta_d0),ylim=c(0,180),col="black",lwd=2)
+plot(density(dm1_beta_d0),col="black",lwd=2)
 lines(density(dm1_beta_d6),col="red",lwd=2)
 legend("topright",legend=c("D0","D6"),fill=c("black","red"),bty = "n")
 dev.off()
@@ -119,8 +119,8 @@ ca_united_dmr3 <- mydiff[unique(hits3.df[,1]),]
   dm3_beta_d0<-ca_united_dmr3$meth.diff
   dm3_beta_d6<-ca_united_dmr3$meth.diff
 
-pdf("dmr3_methdiff_density_mCpA_d0_d6.pdf")
-plot(density(dm3_beta_d0),ylim=c(0,180),col="black",lwd=2)
+pdf("dmr_methdiff_density_mCpA_d0_d6.pdf")
+plot(density(dm1_beta_d0),col="black",lwd=2)
 lines(density(dm3_beta_d6),col="red",lwd=2)
-legend("topright",legend=c("D0","D6"),fill=c("black","red"),bty = "n")
+legend("topright",legend=c("DMR1","DMR2"),fill=c("black","red"),bty = "n")
 dev.off()
